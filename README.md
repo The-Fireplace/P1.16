@@ -9,6 +9,8 @@
 
 ### Team member and duties
 
+![Group Photo]()
+
 - Rick Trevino - Widget Implementation, Sketch Designer
 
 - Lance Gable - Widget Implementation
@@ -17,7 +19,7 @@
 
 ### Sketch UI and Main Functions
 
-![full sketch](https://github.com/The-Fireplace/Project1-3366/blob/michbish/resources/2019-10-15-Note-17-47-resizeimage.jpg)
+![full sketch](https://github.com/The-Fireplace/Project1-3366/blob/master/resources/2019-10-15-Note-17-47-resizeimage.jpg)
 
 - News Section showing highlights for the day from sports, politics, money, etc.
 
@@ -34,6 +36,8 @@
 - music player controls and exandable to view playlists, albums, or to which service it is connected to
 
 - drag and drop feature to customize the mirrors layout
+
+[Demo Sketch](https://the-fireplace.github.io/Project1-3366/hci-project1/)
 
 
 ### Curent Status
