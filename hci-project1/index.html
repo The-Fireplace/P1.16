@@ -6,7 +6,9 @@
 
   <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
   <script language="javascript" type="text/javascript" src="libraries/p5.min.js"></script>
+  <script language="javascript" type="text/javascript" src="libraries/p5.dom.min.js"></script>
   <script language="javascript" type="text/javascript" src="hci_project1.js"></script>
+  <script language="javascript" type="text/javascript" src="hci_project1_sketch.js"></script>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -24,11 +26,11 @@
     <!-- <div class="top-left">
       <button class="btn btn-outline-primary" style="width:212px; height: 130px;"></button>
     </div>   -->
-    <div class="top-mid" >
+    <div class="top-mid" onclick="switchLight()">
       <button class="btn btn-outline-primary" style="width:71px; height: 65px;"></button>
     </div>
     <div class="mid-left" onclick="switchStock()">
-      <button class="btn btn-outline-primary" style="width:117; height: 72px;">Stock</button>
+      <button class="btn btn-outline-primary" style="width:117; height: 72px;"></button>
     </div>
     <!-- <div class="mid-right-1">
       <button class="btn btn-outline-primary" style="width:56; height: 22px;"></button>
@@ -36,7 +38,7 @@
     <div class="mid-right-2">
       <button class="btn btn-outline-primary" style="width:73; height: 24px;"></button>
     </div> -->
-    <div class="mid-right-3">
+    <div class="mid-right-3" onclick="switchGraph()">
       <button class="btn btn-outline-primary" style="width:60; height: 24px;"></button>
     </div>
     <!-- <div class="mid-right-4">
@@ -48,10 +50,10 @@
     <div class="mid-right-6">
       <button class="btn btn-outline-primary" style="width:62; height: 28px;"></button>
     </div> -->
-    <div class="bottom-left">
+    <div class="bottom-left" onclick="switchNotification()">
       <button class="btn btn-outline-primary" style="width: 45px; height: 50px;"></button>
     </div>  
-    <div class="bottom-left-left">
+    <div class="bottom-left-left" onclick="switchDrag()">
       <button class="btn btn-outline-primary" style="width: 130px; height: 40px;"></button>
     </div> 
   </div>
