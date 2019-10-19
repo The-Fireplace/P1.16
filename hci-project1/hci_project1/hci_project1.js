@@ -1,4 +1,4 @@
-var selectedRect = null;
+var selectedWidget = null;
 var widgets = [];
 let capture;
 
@@ -7,19 +7,19 @@ function setup() {
   capture = createCapture(VIDEO);
   capture.size(500, 500);
   capture.hide();
-  widgets[0] = newRect(50, 50, 80, 80, dummyWidgetDraw);
+  widgets[0] = newWidget(50, 50, 80, 80, dummyWidgetDraw);
 }
 
-function newRect(x, y, w, h, drawFunc) {
+function newWidget(x, y, w, h, drawFunc) {
   return {posX:x,posY:y,w:w,h:h,oX:0,oY:0,draw:drawFunc,};
 }
 
 function mousePressed() {
-  if(selectedRect == null) {
-    for(let r in rects) {
+  if(selectedWidget == null) {
+    for(let r in widgets) {
       r = widgets[r];
       if(mouseX > r.posX && mouseX < r.posX + r.w && mouseY > r.posY && mouseY < r.posY + r.h) {
-        selectedRect = r;
+        selectedWidget = r;
         r.oX = mouseX - r.posX;
         r.oY = mouseY - r.posY;
         break;
@@ -29,16 +29,16 @@ function mousePressed() {
 }
 
 function mouseReleased() {
-  selectedRect = null;
+  selectedWidget = null;
 }
 
 function draw() {
   background(200);
   image(capture, 0, 0, 500, 500);
   //Update dragging rectangle position
-  if(selectedRect != null) {
-    selectedRect.posX = mouseX - selectedRect.oX;
-    selectedRect.posY = mouseY - selectedRect.oY;
+  if(selectedWidget != null) {
+    selectedWidget.posX = mouseX - selectedWidget.oX;
+    selectedWidget.posY = mouseY - selectedWidget.oY;
   }
   for(let r in widgets) {
     r = widgets[r];
