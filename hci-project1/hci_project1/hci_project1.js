@@ -1,18 +1,21 @@
-var selectedWidget = null;
-var widgets = [];
+let selectedWidget = null;
+let widgets = [];
 let capture;
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(1000, 1000);
   capture = createCapture(VIDEO);
-  capture.size(500, 500);
+  capture.size(1000, 1000);
   capture.hide();
-  widgets[0] = newWidget(50, 50, 80, 80, dummyWidgetDraw, dummyWidgetClick);
+  //widgets[0] = newWidget(50, 50, 80, 80, dummyWidgetDraw, dummyWidgetClick);
+  widgets[0] = newWidget(0, 0, 300, 200, newsDraw, newsClick);
+  
+  loadNews();
 }
 
 //Creates a new idget object with the specified initial position, size, and function for draw and click.
 //drawFunc(int x, int y, int width, int height) where x,y is the top left corner of the widget
-//clickFunc(int x, int y) where x,y is the position within the widget that was clicked, so the top left corner of the widget is 0,0 and the bottom right is the widget's width,height.
+//clickFunc(int x, int y, int width, int height) where x,y is the position within the widget that was clicked, so the top left corner of the widget is 0,0 and the bottom right is the widget's width,height.
 function newWidget(x, y, w, h, drawFunc, clickFunc) {
   return {posX:x,posY:y,w:w,h:h,oX:0,oY:0,draw:drawFunc,click:clickFunc,};
 }
@@ -27,7 +30,7 @@ function mousePressed() {
           r.oY = mouseY - r.posY;
         }
         //Call the widget's click handler
-        r.click(mouseX-r.posX, mouseY-r.posY);
+        r.click(mouseX-r.posX, mouseY-r.posY, r.w, r.h);
         break;
       }
     }
@@ -39,7 +42,7 @@ function mouseReleased() {
 
 function draw() {
   background(200);
-  image(capture, 0, 0, 500, 500);
+  image(capture, 0, 0, 1000, 1000);
   //Update dragging rectangle position
   if(selectedWidget != null) {
     selectedWidget.posX = mouseX - selectedWidget.oX;
@@ -70,6 +73,6 @@ function dummyWidgetDraw(x, y, w, h) {
 }
 
 //A simple method to test clicking within widgets
-function dummyWidgetClick(x, y) {
+function dummyWidgetClick(x, y, w, h) {
   print('click registered at %s, %s within the widget', x, y);
 }
