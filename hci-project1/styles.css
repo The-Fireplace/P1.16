@@ -1,0 +1,96 @@
+body {
+    --back-url: url("assets/Sketch-lay1-1.jpg");
+    background-image: var(--back-url);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    --blank-space: calc(50% - 256px);
+}
+.b1 {
+    --back-url: url("assests/Sketch-lay1-1.jpg");
+    background-image: var(--back-url);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    --blank-space: calc(50% - 256px);
+}
+.b2 {
+    --back-url: url("assests/Sketch-lay1-1.jpg");
+    background-image: var(--back-url);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    --blank-space: calc(50% - 256px);
+}
+
+img {
+    padding-top:5px;
+    padding-bottom: 5px;
+    width: auto;
+    height: 100%;
+}
+
+.back-center {
+    position: relative;
+    padding-left: var(--blank-space);
+    padding-right: var(--blank-space);
+    min-width: 512px;
+    min-height: 722.4px;
+    max-height: 722.4px;
+}
+
+.top-left{
+    position: absolute;
+    top:9px;
+    left: calc(var(--blank-space) + 11px);
+}
+.top-mid {
+    position: absolute;
+    top: 5px;
+    left: calc(var(--blank-space) + 242px);
+}
+.mid-left {
+    position: absolute;
+    top: 142px;
+    left: calc(var(--blank-space) + 10px);
+}
+.mid-right-1 {
+    position: absolute;
+    top: 225px;
+    right: calc(var(--blank-space) + 90px);
+}
+.mid-right-2 {
+    position: absolute;
+    top: 225px;
+    right: calc(var(--blank-space) + 10px);
+}
+.mid-right-3 {
+    position: absolute;
+    top: 252px;
+    right: calc(var(--blank-space) + 89px);
+}
+.mid-right-4 {
+    position: absolute;
+    top: 252px;
+    right: calc(var(--blank-space) + 9px);
+}
+.mid-right-5 {
+    position: absolute;
+    top: 280px;
+    right: calc(var(--blank-space) + 90px);
+}
+.mid-right-6 {
+    position: absolute;
+    top: 282px;
+    right: calc(var(--blank-space) + 18px);
+}
+.bottom-left {
+    position: absolute;
+    bottom: 9px;
+    left: calc(var(--blank-space) + 6px);
+}
+.bottom-left-left {
+    position: absolute;
+    bottom: 15px;
+    left: calc(var(--blank-space) + 58px);
+}
