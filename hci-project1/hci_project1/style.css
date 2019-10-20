@@ -1,0 +1,13 @@
+.graphWidButton {
+    border-radius: 20%;
+    cursor:pointer;
+    border:none;
+    width:auto;
+    height:auto;
+    background-color:light-gray;
+    font-size: 20px;
+}
+
+.gbtnWrapper{
+
+}

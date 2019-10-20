@@ -9,8 +9,10 @@ function setup() {
   capture.hide();
   //widgets[0] = newWidget(50, 50, 80, 80, dummyWidgetDraw, dummyWidgetClick);
   widgets[0] = newWidget(0, 0, 300, 200, newsDraw, newsClick);
+  widgets[1] = newWidget(800, 200, 200, 200, healthDraw, healthClick);
   
   loadNews();
+  setupHealthWidget(widgets[1].w, widgets[1].h);
 }
 
 //Creates a new idget object with the specified initial position, size, and function for draw and click.
