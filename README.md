@@ -9,7 +9,7 @@
 
 ### Team member and duties
 
-![Group Photo](https://github.com/The-Fireplace/Project1-3366/blob/michbish/resources/group_photo.png)
+![Group Photo](https://github.com/The-Fireplace/Project1-3366/blob/master/resources/group_photo.png)
 
 - Rick Trevino - Widget Implementation, Sketch Designer
 
@@ -19,7 +19,7 @@
 
 ### Sketch UI and Main Functions
 
-![full sketch](https://github.com/The-Fireplace/Project1-3366/blob/michbish/resources/2019-10-15-Note-17-47-resizeimage.png)
+![full sketch](https://github.com/The-Fireplace/Project1-3366/blob/master/resources/2019-10-15-Note-17-47-resizeimage.png)
 
 - News Section showing highlights for the day from sports, politics, money, etc.
 
@@ -31,18 +31,18 @@
 
 - Health section with graphs representing a total of 6 different statistics to view as well as a scroll feature for different weeks to view
 
-- notification area with any notifications from your personal device as well as settings for the mirror
+- Notification area with any notifications from your personal device as well as settings for the mirror
 
-- music player controls and exandable to view playlists, albums, or to which service it is connected to
+- Music player controls and expandable to view playlists, albums, or to which service it is connected to
 
-- drag and drop feature to customize the mirrors layout
+- Drag and drop feature to customize the mirrors layout
 
 [Demo Sketch](https://the-fireplace.github.io/Project1-3366/hci-project1/)
 
 
 ### Curent Status
 
-Widgets for the mirror are done to allow for drag and drop features. The widgets; Weather, Health graphs, and News.
+Widgets for the mirror are done to allow for drag and drop features. The widgets: Weather, Health graphs, and News have been implemented.
 
 ### The Future Plan
 
