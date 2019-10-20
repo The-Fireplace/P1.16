@@ -33,7 +33,7 @@ function newsDraw(x, y, w, h) {
   fill(0);
   textAlign(LEFT, TOP);
   //Cycle news every five seconds
-  if(++tick % 300 == 0) {
+  if(++tick % 300 === 0) {
     tick = 0;
     cycleNews();
   }
