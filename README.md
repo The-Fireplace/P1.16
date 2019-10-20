@@ -9,13 +9,13 @@
 
 ### Team member and duties
 
-![Group Photo]()
+![Group Photo](https://github.com/The-Fireplace/Project1-3366/blob/michbish/resources/group_photo.jpg)
 
 - Rick Trevino - Widget Implementation, Sketch Designer
 
-- Lance Gable - Widget Implementation
+- Lance Gable - Leader, Widget Implementation
 
-- Michael Bishop - Sketch Designer, Support 
+- Michael Bishop - Widget Implementation, Sketch Presentation, Support 
 
 ### Sketch UI and Main Functions
 
