@@ -1,11 +1,12 @@
 let selectedWidget = null;
 let widgets = [];
 let capture;
+let width = 1000, height = 1000;
 
 function setup() {
-  createCanvas(1000, 1000);
+  createCanvas(width, height);
   capture = createCapture(VIDEO);
-  capture.size(1000, 1000);
+  capture.size(width, height);
   capture.hide();
   widgets[0] = newWidget(0, 0, 300, 200, newsDraw, newsClick);
   widgets[1] = newWidget(800, 200, 200, 200, healthDraw, healthClick);
@@ -44,11 +45,23 @@ function mouseReleased() {
 
 function draw() {
   background(200);
-  image(capture, 0, 0, 1000, 1000);
+  image(capture, 0, 0, width, height);
   //Update dragging rectangle position
   if(selectedWidget != null) {
-    selectedWidget.posX = mouseX - selectedWidget.oX;
-    selectedWidget.posY = mouseY - selectedWidget.oY;
+    if(mouseX - selectedWidget.oX >= 0 && mouseX - selectedWidget.oX + selectedWidget.w <= width) {
+      selectedWidget.posX = mouseX - selectedWidget.oX;
+    } else if(mouseX - selectedWidget.oX + selectedWidget.w <= width) {
+      selectedWidget.posX = 0;
+    } else {
+      selectedWidget.posX = width - selectedWidget.w;
+    }
+    if(mouseY - selectedWidget.oY >= 0 && mouseY - selectedWidget.oY + selectedWidget.h <= height) {
+      selectedWidget.posY = mouseY - selectedWidget.oY;
+    } else if(mouseY - selectedWidget.oY + selectedWidget.h <= height) {
+      selectedWidget.posY = 0;
+    } else {
+      selectedWidget.posY = height - selectedWidget.h;
+    }
   }
   //for each widget, we want to draw the background then call the widget's draw function.
   for(let r in widgets) {
