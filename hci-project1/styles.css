@@ -1,33 +1,10 @@
-body {
+.body-back {
     --back-url: url("assets/Sketch-lay1-1.jpg");
     background-image: var(--back-url);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     --blank-space: calc(50% - 256px);
-}
-.b1 {
-    --back-url: url("assests/Sketch-lay1-1.jpg");
-    background-image: var(--back-url);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    --blank-space: calc(50% - 256px);
-}
-.b2 {
-    --back-url: url("assests/Sketch-lay1-1.jpg");
-    background-image: var(--back-url);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    --blank-space: calc(50% - 256px);
-}
-
-img {
-    padding-top:5px;
-    padding-bottom: 5px;
-    width: auto;
-    height: 100%;
 }
 
 .back-center {
