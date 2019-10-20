@@ -19,7 +19,7 @@
 
 ### Sketch UI and Main Functions
 
-![full sketch](https://github.com/The-Fireplace/Project1-3366/blob/master/resources/2019-10-15-Note-17-47-resizeimage.png)
+![full sketch](https://github.com/The-Fireplace/Project1-3366/blob/master/resources/2019-10-15-Note-17-47-resizeimage.jpg)
 
 - News Section showing highlights for the day from sports, politics, money, etc.
 
