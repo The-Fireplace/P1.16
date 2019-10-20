@@ -9,17 +9,17 @@
 
 ### Team member and duties
 
-![Group Photo](https://github.com/The-Fireplace/Project1-3366/blob/michbish/resources/group_photo.jpg)
+![Group Photo](https://github.com/The-Fireplace/Project1-3366/blob/michbish/resources/group_photo.png)
 
 - Rick Trevino - Widget Implementation, Sketch Designer
 
 - Lance Gable - Leader, Widget Implementation
 
-- Michael Bishop - Widget Implementation, Sketch Presentation, Support 
+- Michael Bishop - Widget Implementation, Sketch Presentation 
 
 ### Sketch UI and Main Functions
 
-![full sketch](https://github.com/The-Fireplace/Project1-3366/blob/michbish/resources/2019-10-15-Note-17-47-resizeimage.jpg)
+![full sketch](https://github.com/The-Fireplace/Project1-3366/blob/michbish/resources/2019-10-15-Note-17-47-resizeimage.png)
 
 - News Section showing highlights for the day from sports, politics, money, etc.
 
@@ -42,8 +42,8 @@
 
 ### Curent Status
 
-Widgets for the mirror are almost done to allow for drag and drop feature.
+Widgets for the mirror are done to allow for drag and drop features. The widgets; Weather, Health graphs, and News.
 
 ### The Future Plan
 
-Integrating to time and date or calendars 
+Integrating the light, notifications, music player, and stocks widgets. 
