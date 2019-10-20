@@ -7,15 +7,15 @@ function setup() {
   capture = createCapture(VIDEO);
   capture.size(1000, 1000);
   capture.hide();
-  //widgets[0] = newWidget(50, 50, 80, 80, dummyWidgetDraw, dummyWidgetClick);
   widgets[0] = newWidget(0, 0, 300, 200, newsDraw, newsClick);
   widgets[1] = newWidget(800, 200, 200, 200, healthDraw, healthClick);
+  widgets[2] = newWidget(800, 100, 200, 100, calendarDraw, calendarClick);
   
   loadNews();
   setupHealthWidget(widgets[1].w, widgets[1].h);
 }
 
-//Creates a new idget object with the specified initial position, size, and function for draw and click.
+//Creates a new widget object with the specified initial position, size, and function for draw and click.
 //drawFunc(int x, int y, int width, int height) where x,y is the top left corner of the widget
 //clickFunc(int x, int y, int width, int height) where x,y is the position within the widget that was clicked, so the top left corner of the widget is 0,0 and the bottom right is the widget's width,height.
 function newWidget(x, y, w, h, drawFunc, clickFunc) {
@@ -54,7 +54,7 @@ function draw() {
   for(let r in widgets) {
     r = widgets[r];
     //Give the widget background some transparency for a more mirror-like look. Make it less transparent if being dragged.
-    if(selectedWidget == r) {
+    if(selectedWidget === r) {
       fill('rgba(255,255,255, 0.6)');
     } else {
       fill('rgba(255,255,255, 0.4)');
@@ -65,16 +65,4 @@ function draw() {
     //call widget's draw for the foreground
     r.draw(r.posX, r.posY, r.w, r.h);
   }
-}
-
-//A simple draw method to test drawing within the rectangle
-function dummyWidgetDraw(x, y, w, h) {
-  stroke(0);
-  textAlign(CENTER, CENTER);
-  text('Widget', x+w/2, y+h/2);
-}
-
-//A simple method to test clicking within widgets
-function dummyWidgetClick(x, y, w, h) {
-  print('click registered at %s, %s within the widget', x, y);
 }

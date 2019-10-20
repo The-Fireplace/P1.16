@@ -20,6 +20,7 @@ function cycleNews() {
     newsIndex = 0;
   }
 }
+
 function cycleNewsBack() {
   if(--newsIndex < 0) {
     newsIndex = newsImages.length - 1;
@@ -42,7 +43,7 @@ function newsDraw(x, y, w, h) {
   image(newsImages[newsIndex], x+25, y+2, w-50, 3*h/4-2);
   text(newsHeadlines[newsIndex], x+25, y+3*h/4+2, w-50, h/4-2);
   //Left and right arrows: background
-  fill('rgba(255,255,255, 0.2)');
+  fill('rgba(0,0,0, 0.2)');
   rect(x, y, 25, h);
   rect(x+w-25, y, 25, h);
   //left and right arrows
