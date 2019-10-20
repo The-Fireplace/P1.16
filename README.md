@@ -9,7 +9,7 @@
 
 ### Team member and duties
 
-![Group Photo](https://github.com/The-Fireplace/Project1-3366/blob/master/resources/group_photo.png)
+![Group Photo](https://raw.githubusercontent.com/The-Fireplace/Project1-3366/master/resources/group_photo.png)
 
 - Rick Trevino - Widget Implementation, Sketch Designer
 
@@ -19,7 +19,7 @@
 
 ### Sketch UI and Main Functions
 
-![full sketch](https://github.com/The-Fireplace/Project1-3366/blob/master/resources/2019-10-15-Note-17-47-resizeimage.jpg)
+![full sketch](https://raw.githubusercontent.com/The-Fireplace/Project1-3366/master/resources/2019-10-15-Note-17-47-resizeimage.jpg)
 
 - News Section showing highlights for the day from sports, politics, money, etc.
 
