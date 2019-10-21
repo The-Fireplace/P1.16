@@ -9,11 +9,13 @@ function setup() {
   capture.size(width, height);
   capture.hide();
   widgets[0] = newWidget(0, 0, 300, 200, newsDraw, newsClick);
-  widgets[1] = newWidget(width - 200, 200, 200, 200, healthDraw, healthClick);
-  widgets[2] = newWidget(width - 200, 100, 200, 100, calendarDraw, calendarClick);
+  widgets[1] = newWidget(width - 200, 300, 200, 200, healthDraw, healthClick);
+  widgets[2] = newWidget(width - 200, 200, 200, 100, calendarDraw, calendarClick);
   widgets[3] = newWidget(100, height - 50, 200, 50, musicWidgetDraw, musicWidgetClick);
   widgets[4] = newWidget(0, 200, 300, 300, stockDraw, stockClick);
+  widgets[5] = newWidget(750, 0, 250, 200, weatherWidgetDraw, noClick);
   
+  weatherSun();
   loadNews();
   setupHealthWidget(widgets[1].w, widgets[1].h);
   randomSeed(new Date().getMilliseconds());
