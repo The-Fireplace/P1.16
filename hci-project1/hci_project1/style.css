@@ -13,6 +13,9 @@
     font-size: 20px;
 }
 
-.gbtnWrapper{
-
+/* need to copy this slow-spin class*/
+.slow-spin {
+    -webkit-animation: fa-spin 40s infinite linear;
+    animation: fa-spin 40s infinite linear;
 }
+
