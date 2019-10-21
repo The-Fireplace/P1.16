@@ -5,7 +5,7 @@ var Div;
 var url = "http://api.weatherstack.com/current?access_key=d5e66f1a3c3ac4b54e586d0e6029e877&query=Lubbock&units=f"
 
 //the following 2 variables are just initializations to catch errors
-var weatherNum = 0;
+var weatherNum = 70;
 var weatherDesc = 'Sunny';
 
 //standard draw functions that needs to be used in the newwidget function call
@@ -31,7 +31,7 @@ function dayViewDraw(x, y, w, h) {
 
     // setting font awesome, temp, and weather description size and location
     textSize(40);
-    Div.position(x+30,y+57);
+    Div.position(x+40,y+57);
     text(weatherNum + '\xB0F', x+175, y+87);
     textSize(16);
     text(weatherDesc, x+174, y+110);
@@ -43,7 +43,7 @@ function dayViewSun() {
     // loadJSON used for weather api url
     // loadJSON(url, gotWeather);
 
-    Div = createDiv("<i class='fas fa-sun slow-spin'></i>");
+    Div = createDiv("<i class='fas fa-cloud-sun '></i>");
     Div.style('font-size', '60px');
 }
 
