@@ -54,48 +54,51 @@ function stockClick(x, y, w, h){
 
 function stockTable(x, y, w, h){
   lineHeight = h/(stocks.length +1);
+  text("test");
   fill(102, 255, 178);
-  //rect(x, y, w, lineHeight);
+  rect(x, y, w, lineHeight);
   fill(0);
-  textSize(w/4);
+  textSize(h/5);
   textAlign(CENTER);
-  text('Stock', w/2, y+lineHeight);
+  text('Stock', (w/2)+x, y+lineHeight/2);
   fill(255);
-  for (var i in stocks){
+  for (let i in stocks){
     i = Number(i);
     yHeight = ((i+1)*lineHeight);
-    fill(255);
-    //rect(x, yHeight, w, lineHeight);
+    noFill();
+    stroke(0);
+    rect(x, yHeight, w, lineHeight);
 
     yHeight = ((i+2)*lineHeight);
     textSize(w/10);
 
     fill(0);
+    noStroke();
     textAlign(LEFT);
     text(stocks[i], x, y+yHeight);
 
     fill(0);
     textAlign(CENTER);
     dolVal = '$'+value[i];
-    text(dolVal, w/2, y+yHeight);
+    text(dolVal, w/2 +x, y+yHeight);
 
     textAlign(RIGHT);
     percentVal = upDown[i]+percent[i]+'%';
     if (upDown[i] == "+"){fill(0,180,0);}
     else if (upDown[i] == "-"){fill(220,0,0);}
     else {fill(0); percentVal = '0.00%';}
-    text(percentVal, w, y+yHeight);
+    text(percentVal, w+x, y+yHeight);
   }
 }
 
  function graph(x, y, w, h, stockArrPos){
    lineHeight = h/(stocks.length +1);
      fill(102, 255, 178);
-     //rect(x, y, w, lineHeight);
+     rect(x, y, w, lineHeight);
      fill(0);
      textSize(w/4);
      textAlign(CENTER);
-     text('Stock', w/2, y+lineHeight);
+     text('Stock', w/2+x, y+lineHeight);
      textAlign(LEFT);
      fill(255,0,0);
      text('<', x, y+lineHeight);
@@ -116,19 +119,19 @@ function stockTable(x, y, w, h){
     fill(0);
     textAlign(CENTER);
     dolVal = '$'+value[i];
-    text(dolVal, w/2, y+yHeight);
+    text(dolVal, w/2+x, y+yHeight);
 
     textAlign(RIGHT);
     percentVal = upDown[i]+percent[i]+'%';
     if (upDown[i] == "+"){fill(0,180,0);stroke(0,180,0);}
     else if (upDown[i] == "-"){fill(220,0,0);stroke(220,0,0);}
     else {fill(0); percentVal = '0.00%';stroke(0);}
-    text(percentVal, w, y+yHeight);
+    text(percentVal, w+x, y+yHeight);
 
     gH = lineHeight*4;
-    gx = x + (w/20);
+    gx =  (w/20);
     gy = y + lineHeight*2 ;
-    gw = x + w;
+    gw =  w;
     gh = gH;
     ghH = h - (h/30);
 
@@ -136,19 +139,19 @@ function stockTable(x, y, w, h){
     fill(0);
 
     for (let i=0; i<7; i++){
-      p1 = point((gw/7)*(i+1), gy+((gh/10)*stockp[stockArrPos][i]));
-      p1x = (gw/7)*(i+1);
+      //p1 = point((gw/7)*(i+1), gy+((gh/10)*stockp[stockArrPos][i]));
+      p1x = ((gw/7)*(i+1))+x;
       p1y = gy+((gh/10)*stockp[stockArrPos][i]);
       j = i+1;
-      p2 = point((gw/7)*(j+1), gy+((gh/10)*stockp[stockArrPos][j]));
-      p2x = (gw/7)*(j+1);
+      //p2 = point((gw/7)*(j+1), gy+((gh/10)*stockp[stockArrPos][j]));
+      p2x = ((gw/7)*(j+1))+x;
       p2y = gy+((gh/10)*stockp[stockArrPos][j]);
       line(p1x, p1y, p2x, p2y);
     }
 
     stroke(0);
-    line(gx, y + ghH, gw, ghH + y);
-    line(gx, gy+(h/30), gx, ghH + y);
+    line(gx+x, y + ghH, gw+x, ghH + y);
+    line(gx+x, gy+(h/30), gx+x, ghH + y);
 
     strokeWeight(1);
 
