@@ -1,7 +1,7 @@
 let selectedWidget = null;
 let widgets = [];
 let capture;
-let width = 1000, height = 1000;
+const width = 1000, height = 1000;
 
 function setup() {
   createCanvas(width, height);
@@ -9,11 +9,13 @@ function setup() {
   capture.size(width, height);
   capture.hide();
   widgets[0] = newWidget(0, 0, 300, 200, newsDraw, newsClick);
-  widgets[1] = newWidget(800, 200, 200, 200, healthDraw, healthClick);
-  widgets[2] = newWidget(800, 100, 200, 100, calendarDraw, calendarClick);
+  widgets[1] = newWidget(width - 200, 200, 200, 200, healthDraw, healthClick);
+  widgets[2] = newWidget(width - 200, 100, 200, 100, calendarDraw, calendarClick);
+  widgets[3] = newWidget(100, height - 50, 200, 50, musicWidgetDraw, musicWidgetClick);
   
   loadNews();
   setupHealthWidget(widgets[1].w, widgets[1].h);
+  randomSeed(new Date().getMilliseconds());
 }
 
 //Creates a new widget object with the specified initial position, size, and function for draw and click.
@@ -78,4 +80,8 @@ function draw() {
     //call widget's draw for the foreground
     r.draw(r.posX, r.posY, r.w, r.h);
   }
+}
+
+function noClick(x, y, w, h) {
+
 }
