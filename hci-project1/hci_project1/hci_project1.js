@@ -12,6 +12,7 @@ function setup() {
   widgets[1] = newWidget(width - 200, 200, 200, 200, healthDraw, healthClick);
   widgets[2] = newWidget(width - 200, 100, 200, 100, calendarDraw, calendarClick);
   widgets[3] = newWidget(100, height - 50, 200, 50, musicWidgetDraw, musicWidgetClick);
+  widgets[4] = newWidget(0, 200, 300, 300, stockDraw, stockClick);
   
   loadNews();
   setupHealthWidget(widgets[1].w, widgets[1].h);
