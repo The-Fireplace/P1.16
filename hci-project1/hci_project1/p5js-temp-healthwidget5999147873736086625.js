@@ -224,7 +224,7 @@ function genGraphO(){
   b6 = 3;
   b7 = 2.5;
   col = 'o';
-  lab = 'stepts';
+  lab = 'steps';
 }
 function genGraphB(){
   s = 10;
