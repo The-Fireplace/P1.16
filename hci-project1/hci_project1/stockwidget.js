@@ -67,14 +67,14 @@ function stockTable(x, y, w, h){
     yHeight = ((i+1)*lineHeight);
     noFill();
     stroke(0);
-    rect(x, yHeight, w, lineHeight);
+    rect(x, yHeight+y, w, lineHeight);
 
     yHeight = ((i+2)*lineHeight);
     textSize(w/10);
 
     fill(0);
     noStroke();
-    textAlign(LEFT);
+    textAlign(LEFT, BOTTOM);
     text(stocks[i], x, y+yHeight);
 
     fill(0);
@@ -96,12 +96,12 @@ function stockTable(x, y, w, h){
      fill(102, 255, 178);
      rect(x, y, w, lineHeight);
      fill(0);
-     textSize(w/4);
-     textAlign(CENTER);
-     text('Stock', w/2+x, y+lineHeight);
-     textAlign(LEFT);
+     textSize(w/5);
+     textAlign(CENTER, TOP);
+     text('Stock', w/2+x, y);
+     textAlign(LEFT, TOP);
      fill(255,0,0);
-     text('<', x, y+lineHeight);
+     text('<', x, y);
      fill(255);
 
     i = stockArrPos;
@@ -113,7 +113,7 @@ function stockTable(x, y, w, h){
     textSize(w/10);
 
     fill(0);
-    textAlign(LEFT);
+    textAlign(LEFT, BOTTOM);
     text(stocks[i], x, y+yHeight);
 
     fill(0);
