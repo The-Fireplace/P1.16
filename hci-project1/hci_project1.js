@@ -1,10 +1,12 @@
 let selectedWidget = null;
 let widgets = [];
 let capture;
+let dragged = false;
+let canvas;
 
 function setup() {
   
-  createCanvas(1000, 1000);
+  canvas = createCanvas(1000, 1000);
   // capture = createCapture(VIDEO);
   // capture.size(1000, 1000);
   // capture.hide();
@@ -12,6 +14,9 @@ function setup() {
   //dayViewWidget add the following two lines
   dayViewSun();
   widgets[0] = newWidget(750, 0, 250, 200, dayViewDraw, noClick);
+
+  notificationIcon(); 
+  widgets[1] = newWidget(0, 950, 50, 50, notificationDraw, notificationClick);
   
    
 //   loadNews();
@@ -25,46 +30,73 @@ function newWidget(x, y, w, h, drawFunc, clickFunc) {
   return {posX:x,posY:y,w:w,h:h,oX:0,oY:0,draw:drawFunc,click:clickFunc,};
 }
 
-function mousePressed() {
+// new mouse events copy till...
+
+function mouseDragged() {
+  dragged = true;
   for(let r in widgets) {
+    r = widgets[r];
+    if(mouseX > r.posX && mouseX < r.posX + r.w && mouseY > r.posY && mouseY < r.posY + r.h) {
+      if(selectedWidget == null) {
+        selectedWidget = r;
+        r.oX = mouseX - r.posX;
+        r.oY = mouseY - r.posY;
+        break;
+      }
+    }
+  }
+}
+
+function mouseReleased() {
+  if (!dragged){
+    for(let r in widgets) {
       r = widgets[r];
       if(mouseX > r.posX && mouseX < r.posX + r.w && mouseY > r.posY && mouseY < r.posY + r.h) {
-        if(selectedWidget == null) {
-          selectedWidget = r;
-          r.oX = mouseX - r.posX;
-          r.oY = mouseY - r.posY;
-        }
         //Call the widget's click handler
         r.click(mouseX-r.posX, mouseY-r.posY, r.w, r.h);
         break;
       }
     }
-}
-
-function mouseReleased() {
+  }
+  dragged = false;
   selectedWidget = null;
 }
 
+// ...here
+
 function draw() {
   background(200);
-  // image(capture, 0, 0, 1000, 1000);
+  //image(capture, 0, 0, width, height);
   //Update dragging rectangle position
   if(selectedWidget != null) {
-    selectedWidget.posX = mouseX - selectedWidget.oX;
-    selectedWidget.posY = mouseY - selectedWidget.oY;
+    if(mouseX - selectedWidget.oX >= 0 && mouseX - selectedWidget.oX + selectedWidget.w <= width) {
+      selectedWidget.posX = mouseX - selectedWidget.oX;
+    } else if(mouseX - selectedWidget.oX + selectedWidget.w <= width) {
+      selectedWidget.posX = 0;
+    } else {
+      selectedWidget.posX = width - selectedWidget.w;
+    }
+    if(mouseY - selectedWidget.oY >= 0 && mouseY - selectedWidget.oY + selectedWidget.h <= height) {
+      selectedWidget.posY = mouseY - selectedWidget.oY;
+    } else if(mouseY - selectedWidget.oY + selectedWidget.h <= height) {
+      selectedWidget.posY = 0;
+    } else {
+      selectedWidget.posY = height - selectedWidget.h;
+    }
   }
   //for each widget, we want to draw the background then call the widget's draw function.
   for(let r in widgets) {
     r = widgets[r];
     //Give the widget background some transparency for a more mirror-like look. Make it less transparent if being dragged.
-    if(selectedWidget == r) {
+    if(selectedWidget === r) {
       fill('rgba(255,255,255, 0.6)');
     } else {
       fill('rgba(255,255,255, 0.4)');
     }
     noStroke();
-    //draw background
-    rect(r.posX, r.posY, r.w, r.h);
+    //draw background 
+    //only a rect corner rounding added here
+    rect(r.posX, r.posY, r.w, r.h, 8);
     //call widget's draw for the foreground
     r.draw(r.posX, r.posY, r.w, r.h);
   }

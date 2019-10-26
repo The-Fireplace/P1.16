@@ -43,7 +43,7 @@ function dayViewSun() {
     // loadJSON used for weather api url
     // loadJSON(url, gotWeather);
 
-    Div = createDiv("<i class='fas fa-cloud-sun '></i>");
+    Div = createDiv("<i class='fas fa-sun slow-spin'></i>");
     Div.style('font-size', '60px');
 }
 
