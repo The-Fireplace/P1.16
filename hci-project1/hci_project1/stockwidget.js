@@ -55,8 +55,8 @@ function stockClick(x, y, w, h){
 function stockTable(x, y, w, h){
   lineHeight = h/(stocks.length +1);
   text("test");
-  fill(102, 255, 178);
-  rect(x, y, w, lineHeight);
+  fill(0, 153, 153);
+  rect(x, y, w, lineHeight, 10, 10, 0, 0);
   fill(0);
   textSize(h/5);
   textAlign(CENTER);
@@ -84,7 +84,7 @@ function stockTable(x, y, w, h){
 
     textAlign(RIGHT);
     percentVal = upDown[i]+percent[i]+'%';
-    if (upDown[i] == "+"){fill(0,180,0);}
+    if (upDown[i] == "+"){fill(0,102,0);}
     else if (upDown[i] == "-"){fill(220,0,0);}
     else {fill(0); percentVal = '0.00%';}
     text(percentVal, w+x, y+yHeight);
