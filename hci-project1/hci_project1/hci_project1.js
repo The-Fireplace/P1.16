@@ -49,6 +49,7 @@ function mouseReleased() {
       if (mouseX > r.posX && mouseX < r.posX + r.w && mouseY > r.posY && mouseY < r.posY + r.h) {
         //Call the widget's click handler
         r.click(mouseX - r.posX, mouseY - r.posY, r.w, r.h);
+        break;
       }
     }
   } else {
