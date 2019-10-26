@@ -82,15 +82,15 @@ function draw() {
     r = widgets[r];
     //Give the widget background some transparency for a more mirror-like look. Make it less transparent if being dragged.
     if(selectedWidget === r) {
-      fill('rgba(255,255,255, 0.6)');
+      fill('rgba(255,255,255, 0.3)');
     } else {
-      fill('rgba(255,255,255, 0.4)');
+      fill('rgba(255,255,255, 0.2)');
     }
     noStroke();
     //draw background
-    rect(r.posX, r.posY, r.w, r.h);
+    rect(r.posX, r.posY, r.w, r.h, 16);
     //call widget's draw for the foreground
-    r.draw(r.posX, r.posY, r.w, r.h);
+    r.draw(r.posX + 8, r.posY + 8, r.w - 16, r.h - 16);
   }
 }
 
