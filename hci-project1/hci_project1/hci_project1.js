@@ -29,7 +29,6 @@ function setup() {
 function newWidget(x, y, w, h, drawFunc, clickFunc, dragOverrideFunc=noDragOverride) {
   return {posX:x,posY:y,w:w,h:h,oX:0,oY:0,draw:drawFunc,click:clickFunc,dragOverride:dragOverrideFunc};
 }
-
 function mouseDragged() {
   if(selectedWidget == null) {
     for (let r in widgets) {
@@ -100,6 +99,6 @@ function noClick(x, y, w, h) {
 
 }
 
-function noDragOverride(x, y, w, h) {0
+function noDragOverride(x, y, w, h) {
   return false;
 }
