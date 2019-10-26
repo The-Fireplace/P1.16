@@ -10,6 +10,8 @@ var weatherDesc = 'Sunny';
 
 //standard draw functions that needs to be used in the newwidget function call
 function weatherWidgetDraw(x, y, w, h) {
+    x = x - 8;
+    y = y - 8;
     fill(0);
     textAlign(CENTER, BOTTOM);
 
