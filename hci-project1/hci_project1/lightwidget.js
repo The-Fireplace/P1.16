@@ -1,31 +1,59 @@
 let lb;
 let slider;
+var dragSlider = false;
+let lit = false;
 
 function lbsetup() {
     lb = createButton('').class("graphWidButton").html('<i class="far fa-lightbulb" style="color:black;"><text style="color:white;"></text></i>', true);
     lb.style('border-radius', '50%');
     
     slider = createSlider(0, 255, 100);
-    slider.style('width', '80px');
+    slider.hide();
 }
 
 
 function lbDraw(x, y, w, h) {
 
-  lb.position(x, (h/20)+y);
-  lb.style('height', (h/20)*18+'px');
-  lb.style('width', (w/20)*18+'px');
+  if (lb.class() != "graphWidButton"){
+  fill('rgba(255,255,255,'+slider.value()/255+')');
+  rect(0,0,1000,1000);
+  }
+  lb.position(x, y);
+  lb.style('height', (h/20)*17+'px');
+  lb.style('width', (w)+'px');
   lb.style('font-size', w/4+'px');
   lb.mousePressed(opClSettings);
   
-  slider.position((w/3)+x, ((h/10)*6)+y);
+  slider.position(x, (h/20)*18+y);
+  slider.style('width', w+'px');
 }
 
 function lbClick(x, y, w, h){
-  
+  dragSlider = false;
 
 }
 
+function lbDrag(x, y, w, h){
+  if ( dragSlider || (mouseY <= ((h/20)*18)+15+y) && (mouseY >= ((h/20)*18)-15+y) ){
+
+   dragSlider = true;
+   return true; 
+  }
+   //print(mouseY);
+   //console.log(((h/20)*18)+y);
+   //print((mouseY <= ((h/20)*18)+5+y));
+   //print((mouseY >= ((h/20)*18)-5+y));
+}
+
 function opClSettings(){
+  if (!lit){
+    lb.class("graphWidButtonYellow");
+    slider.show();
+  }
+  else{
+    lb.class("graphWidButton");
+    slider.hide();
+  }
   
+  lit = !lit;
 };

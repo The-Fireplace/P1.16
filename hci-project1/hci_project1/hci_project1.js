@@ -14,7 +14,7 @@ function setup() {
   widgets[3] = newWidget(100, height - 50, 200, 50, musicWidgetDraw, musicWidgetClick);
   widgets[4] = newWidget(0, 200, 300, 300, stockDraw, stockClick);
   widgets[5] = newWidget(750, 0, 250, 200, weatherWidgetDraw, noClick);
-  widgets[6] = newWidget(400, 0, 300, 300, lbDraw, lbClick);
+  widgets[6] = newWidget(400, 0, 125, 150, lbDraw, lbClick, lbDrag);
   
   weatherSun();
   loadNews();
