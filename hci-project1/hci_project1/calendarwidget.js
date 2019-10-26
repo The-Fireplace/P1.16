@@ -8,7 +8,7 @@ function calendarDraw(x, y, w, h) {
   rect(x, y, w, h/4, 5, 5, 0, 0);
   fill(255);
   noStroke();
-  textSize(24);
+  textSize(h/4);
   text(date.toLocaleDateString("en-US", { weekday: 'short', month: 'short', day: 'numeric' }), x+w/8, y, w-w/4, h/4);
   //Draw arrows
   text('<', x, y, w/8, h/4);
