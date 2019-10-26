@@ -13,6 +13,8 @@ function loadNews() {
   newsHeadlines[3] = 'Bounty Unveils New Ultra-Thin Paper Towels For More Natural Feeling While Wiping Up Spills';
   newsImages[4] = loadImage('https://i.kinja-img.com/gawker-media/image/upload/zsflmrvezfn6l6rtuaif.jpg');
   newsHeadlines[4] = 'PG&E Makes Amends For Power Outages By Pumping Wires Full Of So Much Electricity That Plugging In Lamp Will Kill You';
+  newsImages[5] = loadImage('stonks.jpg');
+  newsHeadlines[5] = 'Rick designs stocks widget successfully.';
 }
 
 function cycleNews() {
