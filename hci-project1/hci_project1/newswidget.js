@@ -30,35 +30,37 @@ function cycleNewsBack() {
 let tick = 0;
 
 function newsDraw(x, y, w, h) {
-  textSize(12);
-  fill(0);
-  textAlign(LEFT, TOP);
   //Cycle news every five seconds
   if(++tick % 300 === 0) {
     tick = 0;
     cycleNews();
   }
-  
-  //Display current news article
-  image(newsImages[newsIndex], x+25, y+2, w-50, 3*h/4-2);
-  text(newsHeadlines[newsIndex], x+25, y+3*h/4+2, w-50, h/4-2);
-  //Left and right arrows: background
-  fill('rgba(0,0,0, 0.2)');
-  rect(x, y, 25, h);
-  rect(x+w-25, y, 25, h);
-  //left and right arrows
-  textSize(24);
-  fill(0);
+  //Draw top line with the title and arrows
   textAlign(CENTER, CENTER);
-  text('<', x, y, 25, h);
-  text('>', x+w-25, y, 25, h);
+  fill('rgba(255, 0, 0, 0.75)');
+  stroke(0);
+  rect(x, y, w-1, 25, 5, 5, 0, 0);
+  fill(255);
+  noStroke();
+  textSize(24);
+  text('News', x+w/8, y+2, w-w/4, 25);
+  //Draw arrows
+  text('<', x, y+2, w/8, 25);
+  text('>', x+w-w/8, y+2, w/8, 25);
+
+  textSize(12);
+  fill(0);
+  textAlign(LEFT, TOP);
+  //Display current news article
+  image(newsImages[newsIndex], x, y+25, w, 3*h/4-25);
+  text(newsHeadlines[newsIndex], x, y+3*h/4+2, w, h/4);
 }
 
 function newsClick(x, y, w, h) {
-  if(x < 25) {
+  if(x <= w/8) {
     cycleNewsBack();
     tick = 0;
-  } else if(x > w-25) {
+  } else if(x >= w-w/8) {
     cycleNews();
     tick = 0;
   }

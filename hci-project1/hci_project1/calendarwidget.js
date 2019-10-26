@@ -9,10 +9,10 @@ function calendarDraw(x, y, w, h) {
   fill(255);
   noStroke();
   textSize(h/4);
-  text(date.toLocaleDateString("en-US", { weekday: 'short', month: 'short', day: 'numeric' }), x+w/8, y, w-w/4, h/4);
+  text(date.toLocaleDateString("en-US", { weekday: 'short', month: 'short', day: 'numeric' }), x+w/8, y+2, w-w/4, h/4);
   //Draw arrows
-  text('<', x, y, w/8, h/4);
-  text('>', x+w-w/8, y, w/8, h/4);
+  text('<', x, y+2, w/8, h/4);
+  text('>', x+w-w/8, y+2, w/8, h/4);
   //Draw tasks
   const tasks = getTasks(date);
   if(tasks.length > 0) {
