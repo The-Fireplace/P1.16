@@ -34,7 +34,7 @@ function mouseDragged() {
   if(selectedWidget == null) {
     for (let r in widgets) {
       r = widgets[r];
-      if (mouseX > r.posX && mouseX < r.posX + r.w && mouseY > r.posY && mouseY < r.posY + r.h && !r.dragOverride(r.x, r.y, r.w, r.h)) {
+      if (mouseX > r.posX && mouseX < r.posX + r.w && mouseY > r.posY && mouseY < r.posY + r.h && !r.dragOverride(r.posX, r.posY, r.w, r.h)) {
         selectedWidget = r;
         r.oX = mouseX - r.posX;
         r.oY = mouseY - r.posY;
@@ -100,6 +100,6 @@ function noClick(x, y, w, h) {
 
 }
 
-function noDragOverride(x, y, w, h) {
+function noDragOverride(x, y, w, h) {0
   return false;
 }
