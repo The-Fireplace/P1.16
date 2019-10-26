@@ -2,6 +2,7 @@ let playButton = null, pauseButton = null, nextButton = null, prevButton = null;
 let playing = false;
 let curTimeStamp = Math.floor(Math.random()*100);
 let maxTimeStamp = 500;
+let curTrack = 'Nothing Playing';
 
 function musicWidgetDraw(x, y, w, h) {
   //Draw progress bar at the bottom
@@ -18,6 +19,7 @@ function musicWidgetDraw(x, y, w, h) {
     nextButton = createDiv("<i class='fas fa-forward'></i>");
     prevButton = createDiv("<i class='fas fa-backward'></i>");
   }
+  //Set positions for buttons
   prevButton.position(x+4, y+h/2);
   nextButton.position(x+w-18, y+h/2);
   //turn play/pause buttons on and off as needed
@@ -35,6 +37,10 @@ function musicWidgetDraw(x, y, w, h) {
       curTimeStamp = 0;
     }
   }
+  //Show the label for the currently playing track
+  fill(0);
+  textAlign(TOP, LEFT);
+  text(curTrack, x, y, w, h/4);
 }
 
 function musicWidgetClick(x, y, w, h) {
