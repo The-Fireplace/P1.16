@@ -27,7 +27,7 @@ function setup() {
 //drawFunc(int x, int y, int width, int height) where x,y is the top left corner of the widget
 //clickFunc(int x, int y, int width, int height) where x,y is the position within the widget that was clicked, so the top left corner of the widget is 0,0 and the bottom right is the widget's width,height.
 function newWidget(x, y, w, h, drawFunc, clickFunc, dragOverrideFunc=noDragOverride) {
-  return {posX:x,posY:y,w:w,h:h,oX:0,oY:0,draw:drawFunc,click:clickFunc,dragOverride:dragOverrideFunc};
+return {posX:x,posY:y,w:w,h:h,oX:0,oY:0,draw:drawFunc,click:clickFunc,dragOverride:dragOverrideFunc};
 }
 function mouseDragged() {
   if(selectedWidget == null) {
