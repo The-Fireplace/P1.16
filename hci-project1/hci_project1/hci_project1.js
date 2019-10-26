@@ -24,15 +24,15 @@ function setup() {
 //Creates a new widget object with the specified initial position, size, and function for draw and click.
 //drawFunc(int x, int y, int width, int height) where x,y is the top left corner of the widget
 //clickFunc(int x, int y, int width, int height) where x,y is the position within the widget that was clicked, so the top left corner of the widget is 0,0 and the bottom right is the widget's width,height.
-function newWidget(x, y, w, h, drawFunc, clickFunc) {
-  return {posX:x,posY:y,w:w,h:h,oX:0,oY:0,draw:drawFunc,click:clickFunc,};
+function newWidget(x, y, w, h, drawFunc, clickFunc, dragOverrideFunc=noDragOverride) {
+  return {posX:x,posY:y,w:w,h:h,oX:0,oY:0,draw:drawFunc,click:clickFunc,dragOverride:dragOverrideFunc};
 }
 
 function mouseDragged() {
   if(selectedWidget == null) {
     for (let r in widgets) {
       r = widgets[r];
-      if (mouseX > r.posX && mouseX < r.posX + r.w && mouseY > r.posY && mouseY < r.posY + r.h) {
+      if (mouseX > r.posX && mouseX < r.posX + r.w && mouseY > r.posY && mouseY < r.posY + r.h && !r.dragOverride(r.x, r.y, r.w, r.h)) {
         selectedWidget = r;
         r.oX = mouseX - r.posX;
         r.oY = mouseY - r.posY;
@@ -96,4 +96,8 @@ function draw() {
 
 function noClick(x, y, w, h) {
 
+}
+
+function noDragOverride(x, y, w, h) {
+  return false;
 }
