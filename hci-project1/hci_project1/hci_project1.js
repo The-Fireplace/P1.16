@@ -28,24 +28,32 @@ function newWidget(x, y, w, h, drawFunc, clickFunc) {
   return {posX:x,posY:y,w:w,h:h,oX:0,oY:0,draw:drawFunc,click:clickFunc,};
 }
 
-function mousePressed() {
-  for(let r in widgets) {
+function mouseDragged() {
+  if(selectedWidget == null) {
+    for (let r in widgets) {
       r = widgets[r];
-      if(mouseX > r.posX && mouseX < r.posX + r.w && mouseY > r.posY && mouseY < r.posY + r.h) {
-        if(selectedWidget == null) {
-          selectedWidget = r;
-          r.oX = mouseX - r.posX;
-          r.oY = mouseY - r.posY;
-        }
-        //Call the widget's click handler
-        r.click(mouseX-r.posX, mouseY-r.posY, r.w, r.h);
+      if (mouseX > r.posX && mouseX < r.posX + r.w && mouseY > r.posY && mouseY < r.posY + r.h) {
+        selectedWidget = r;
+        r.oX = mouseX - r.posX;
+        r.oY = mouseY - r.posY;
         break;
       }
     }
+  }
 }
 
 function mouseReleased() {
-  selectedWidget = null;
+  if(selectedWidget == null) {
+    for (let r in widgets) {
+      r = widgets[r];
+      if (mouseX > r.posX && mouseX < r.posX + r.w && mouseY > r.posY && mouseY < r.posY + r.h) {
+        //Call the widget's click handler
+        r.click(mouseX - r.posX, mouseY - r.posY, r.w, r.h);
+      }
+    }
+  } else {
+    selectedWidget = null;
+  }
 }
 
 function draw() {
