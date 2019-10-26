@@ -39,8 +39,9 @@ function musicWidgetDraw(x, y, w, h) {
   }
   //Show the label for the currently playing track
   fill(0);
-  textAlign(TOP, LEFT);
-  text(curTrack, x, y, w, h/4);
+  textAlign(CENTER, CENTER);
+  textSize(h/4);
+  text(curTrack, x, y+2, w, h/4);
 }
 
 function musicWidgetClick(x, y, w, h) {
