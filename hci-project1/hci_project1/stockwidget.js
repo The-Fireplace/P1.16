@@ -56,11 +56,12 @@ function stockTable(x, y, w, h){
   lineHeight = h/(stocks.length +1);
   text("test");
   fill('rgba(255, 0, 0, 0.75)');
+  stroke(0);
   rect(x, y, w, lineHeight, 10, 10, 0, 0);
   fill(255);
   textSize(h/6);
   textAlign(CENTER);
-  text('Stock', (w/2)+x, y+lineHeight/2);
+  text('Stocks', (w/2)+x, 4+y+lineHeight/2);
   fill(255);
   for (let i in stocks){
     i = Number(i);
@@ -93,16 +94,17 @@ function stockTable(x, y, w, h){
 }
 
  function graph(x, y, w, h, stockArrPos){
+   stroke(0);
    lineHeight = h/(stocks.length +1);
      fill('rgba(255, 0, 0, 0.75)');
      rect(x, y, w, lineHeight, 10, 10, 0, 0);
      fill(255);
-     textSize(w/5);
+     textSize(h/6);
      textAlign(CENTER, TOP);
-     text('Stock', w/2+x, y);
+     text('Stocks', w/2+x, y+4);
      textAlign(LEFT, TOP);
      fill(255);
-     text('<', x, y);
+     text('<', x+10, y+4);
      fill(255);
      
      for (let i in stocks){
