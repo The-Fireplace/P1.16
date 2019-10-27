@@ -4,19 +4,18 @@ let radiusSet = true;
 let radius = 100;
 let opened = false;
 let notificationContent = [];
-let notificationNum = 2;
+let notificationNum = 3;
 let notificationRect = [];
 
 notificationContent[0] = newContent('twitter', 'Someone @ you.', "2:34 PM");
 notificationContent[1] = newContent('facebook', 'Someone poked you.', "2:32 PM");
 notificationContent[2] = newContent('messages', 'So-and-So texted you', "1:56 PM");
-notificationContent[3] = newContent('messages', 'So-and-So texted you', "1:43 PM");
 
 function notificationDraw(x, y, w, h) {
-    x = x - 8;
-    y = y - 8;
-    w = w + 16;
-    h = h + 16;
+    // x = x - 8;
+    // y = y - 8;
+    // w = w + 16;
+    // h = h + 16;
     rect(x, y, w, h, radius);
 
     fill(0);
