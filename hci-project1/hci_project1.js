@@ -107,3 +107,7 @@ function noClick(x, y, w, h) {
 function noDragOverride(x, y, w, h) {
   return false;
 }
+
+function touchStarted() {
+  return false;
+}
