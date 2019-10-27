@@ -54,8 +54,87 @@ function mouseReleased() {
       }
     }
   } else {
+    //Don't let widgets overlap
+    //This will generally put the widget closest to where it was released, but edge cases do exist.
+    while(somethingOverlaps(selectedWidget)) {
+      for(let w in widgets) {
+        w = widgets[w];
+        if(rectanglesOverlap(selectedWidget, w)) {
+          const left = cloneWidgetCoords(selectedWidget);
+          const right = cloneWidgetCoords(selectedWidget);
+          const up = cloneWidgetCoords(selectedWidget);
+          const down = cloneWidgetCoords(selectedWidget);
+          if(w.posX-left.w > 0) {
+            left.posX = w.posX - left.w - 1;
+          }
+          if(w.posX+w.w+right.w < width) {
+            right.posX = w.posX + w.w + 1;
+          }
+          if(w.posY-up.h > 0) {
+            up.posY = w.posY - up.h - 1;
+          }
+          if(w.posY+w.h+down.h < height) {
+            down.posY = w.posY + w.h + 1;
+          }
+
+          const leftDist = Math.abs(selectedWidget.posX-left.posX);
+          const rightDist = Math.abs(right.posX-selectedWidget.posX);
+          const upDist = Math.abs(selectedWidget.posY-up.posY);
+          const downDist = Math.abs(down.posY-selectedWidget.posY);
+          const min = Math.min(leftDist, rightDist, upDist, downDist);
+
+          switch(min) {
+            case leftDist:
+              selectedWidget.posX = left.posX;
+              break;
+            case rightDist:
+              selectedWidget.posX = right.posX;
+              break;
+            case upDist:
+              selectedWidget.posY = up.posY;
+              break;
+            case downDist:
+              selectedWidget.posY = down.posY;
+              break;
+          }
+          break;
+        }
+      }
+    }
     selectedWidget = null;
   }
+}
+
+function cloneWidgetCoords(widget) {
+  return {posX:widget.posX,posY:widget.posY,w:widget.w,h:widget.h};
+}
+
+function somethingOverlaps(selectedWidget) {
+  for(let w in widgets) {
+    w = widgets[w];
+    if(widgetsOverlap(selectedWidget, w)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function widgetsOverlap(widget1, widget2) {
+  if(widget1 == widget2) {
+    return false;
+  }
+  return rectanglesOverlap(widget1.posX, widget1.posY, widget1.posX + widget1.w, widget1.posY + widget1.h,
+      widget2.posX, widget2.posY, widget2.posX + widget2.w, widget2.posY + widget2.h);
+}
+
+function rectanglesOverlap(lx1, ly1, rx1, ry1, lx2, ly2, rx2, ry2) {
+  if(lx1 > rx2 || lx2 > rx1) {
+    return false;
+  }
+  if(ly1 > ry2 || ly2 > ry1) {
+    return false;
+  }
+  return true;
 }
 
 function draw() {
