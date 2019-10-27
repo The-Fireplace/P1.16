@@ -12,10 +12,10 @@ notificationContent[1] = newContent('facebook', 'Someone poked you.', "2:32 PM")
 notificationContent[2] = newContent('messages', 'So-and-So texted you', "1:56 PM");
 
 function notificationDraw(x, y, w, h) {
-    // x = x - 8;
-    // y = y - 8;
-    // w = w + 16;
-    // h = h + 16;
+    x = x - 8;
+    y = y - 8;
+    w = w + 16;
+    h = h + 16;
     rect(x, y, w, h, radius);
 
     fill(0);

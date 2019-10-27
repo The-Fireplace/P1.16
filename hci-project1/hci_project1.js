@@ -7,17 +7,9 @@ function setup() {
   // capture = createCapture(VIDEO);
   // capture.size(1000, 1000);
   // capture.hide();
-  
-  //dayViewWidget add the following two lines
-  dayViewSun();
-  widgets[0] = newWidget(750, 0, 250, 200, dayViewDraw, noClick);
-
 
   notificationIcon(); 
   widgets[1] = newWidget(0, 950, 50, 50, notificationDraw, notificationClick, false);
-   
-//   loadNews();
-//   setupHealthWidget(widgets[1].w, widgets[1].h);
 }
 
 //Creates a new widget object with the specified initial position, size, and function for draw and click.
