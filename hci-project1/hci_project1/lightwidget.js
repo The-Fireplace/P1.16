@@ -7,7 +7,7 @@ function lbsetup() {
     lb = createButton('').class("graphWidButton").html('<i class="far fa-lightbulb" style="color:black;"><text style="color:white;"></text></i>', true);
     lb.style('border-radius', '50%');
     
-    slider = createSlider(0, 255, 100);
+    slider = createSlider(0, 200, 100);
     slider.hide();
 }
 
@@ -15,9 +15,10 @@ function lbsetup() {
 function lbDraw(x, y, w, h) {
 
   if (lb.class() != "graphWidButton"){
-  fill('rgba(255,255,255,'+slider.value()/255+')');
-  rect(0,0,1000,1000);
+    fill('rgba(255,255,255,'+slider.value()/255+')');
+    rect(0,0,1000,1000);
   }
+  
   lb.position(x, y);
   lb.style('height', (h/20)*17+'px');
   lb.style('width', (w)+'px');

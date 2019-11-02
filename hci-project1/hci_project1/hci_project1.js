@@ -9,12 +9,12 @@ function setup() {
   capture.size(width, height);
   capture.hide();
   widgets[0] = newWidget(0, 0, 300, 200, newsDraw, newsClick);
-  widgets[1] = newWidget(width - 200, 300, 200, 200, healthDraw, healthClick);
-  widgets[2] = newWidget(width - 200, 200, 200, 100, calendarDraw, calendarClick);
-  widgets[3] = newWidget(100, height - 50, 200, 50, musicWidgetDraw, musicWidgetClick);
-  widgets[4] = newWidget(0, 200, 300, 300, stockDraw, stockClick);
+  widgets[1] = newWidget(width - 200, 320, 200, 200, healthDraw, healthClick);
+  widgets[2] = newWidget(width - 200, 210, 200, 100, calendarDraw, calendarClick);
+  widgets[3] = newWidget(100, height - 50, 200, 60, musicWidgetDraw, musicWidgetClick);
+  widgets[4] = newWidget(0, 210, 200, 200, stockDraw, stockClick);
   widgets[5] = newWidget(750, 0, 250, 200, weatherWidgetDraw, noClick);
-  widgets[6] = newWidget(400, 0, 125, 150, lbDraw, lbClick, lbDrag);
+  widgets[6] = newWidget(450, 0, 125, 150, lbDraw, lbClick, lbDrag);
   
   weatherSun();
   loadNews();
@@ -158,13 +158,18 @@ function draw() {
     }
   }
   //for each widget, we want to draw the background then call the widget's draw function.
+  let count = 0;
   for(let r in widgets) {
+    count++;
     r = widgets[r];
     //Give the widget background some transparency for a more mirror-like look. Make it less transparent if being dragged.
     if(selectedWidget === r) {
-      fill('rgba(255,255,255, 0.3)');
+      fill('rgba(255,255,255, 0.4)');
     } else {
-      fill('rgba(255,255,255, 0.2)');
+      fill('rgba(255,255,255, 0.1)');
+    }
+    if(count == 7){
+      fill('rgba(255,255,255, 0.0)');
     }
     noStroke();
     //draw background

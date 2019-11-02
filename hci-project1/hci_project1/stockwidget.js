@@ -115,6 +115,7 @@ function stockTable(x, y, w, h){
     rect(x, yHeight+y, w, lineHeight);
   }
 
+    stroke(0);
     i = stockArrPos;
     yHeight = (lineHeight);
     fill(255);
@@ -134,9 +135,14 @@ function stockTable(x, y, w, h){
 
     textAlign(RIGHT);
     percentVal = upDown[i]+percent[i]+'%';
-    if (upDown[i] == "+"){fill(0,102,0);stroke(0,180,0);}
-    else if (upDown[i] == "-"){fill(220,0,0);stroke(220,0,0);}
-    else {fill(0); percentVal = '0.00%';stroke(0);}
+    if (upDown[i] == "+"){
+      fill(0,102,0);
+      stroke(0,102,0);
+    }
+    if (upDown[i] == "-"){
+      fill(220,0,0);
+      stroke(220,0,0);
+    }
     text(percentVal, w+x, y+yHeight);
 
     gH = lineHeight*4;
@@ -147,7 +153,6 @@ function stockTable(x, y, w, h){
     ghH = h - (h/30);
 
     strokeWeight(5);
-    fill(0);
 
     for (let i=0; i<7; i++){
       //p1 = point((gw/7)*(i+1), gy+((gh/10)*stockp[stockArrPos][i]));
@@ -157,7 +162,6 @@ function stockTable(x, y, w, h){
       //p2 = point((gw/7)*(j+1), gy+((gh/10)*stockp[stockArrPos][j]));
       p2x = ((gw/7)*(j+1))+x;
       p2y = gy+((gh/10)*stockp[stockArrPos][j]);
-      stroke(0,102,0);
       line(p1x, p1y, p2x, p2y);
     }
 
