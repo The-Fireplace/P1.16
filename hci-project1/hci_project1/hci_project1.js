@@ -81,7 +81,11 @@ function mouseReleased() {
           const rightDist = Math.abs(right.posX-selectedWidget.posX);
           const upDist = Math.abs(selectedWidget.posY-up.posY);
           const downDist = Math.abs(down.posY-selectedWidget.posY);
-          const min = Math.min(leftDist, rightDist, upDist, downDist);
+          //If distance is 0 we don't want to use it because that means there was nowhere to move it in that direction.
+          const min = Math.min(leftDist > 0 ? leftDist : Number.MAX_VALUE,
+              rightDist > 0 ? rightDist : Number.MAX_VALUE,
+              upDist > 0 ? upDist : Number.MAX_VALUE,
+              downDist > 0 ? downDist : Number.MAX_VALUE);
 
           switch(min) {
             case leftDist:
@@ -120,7 +124,8 @@ function somethingOverlaps(selectedWidget) {
 }
 
 function widgetsOverlap(widget1, widget2) {
-  if(widget1 == widget2) {
+  //compare draw functions because that is the only way to uniquely identify the widgets
+  if(widget1.draw == widget2.draw) {
     return false;
   }
   return rectanglesOverlap(widget1.posX, widget1.posY, widget1.posX + widget1.w, widget1.posY + widget1.h,
