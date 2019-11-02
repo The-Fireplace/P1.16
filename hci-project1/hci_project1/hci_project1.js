@@ -59,7 +59,7 @@ function mouseReleased() {
     while(somethingOverlaps(selectedWidget)) {
       for(let w in widgets) {
         w = widgets[w];
-        if(rectanglesOverlap(selectedWidget, w)) {
+        if(widgetsOverlap(selectedWidget, w)) {
           const left = cloneWidgetCoords(selectedWidget);
           const right = cloneWidgetCoords(selectedWidget);
           const up = cloneWidgetCoords(selectedWidget);
