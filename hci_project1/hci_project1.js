@@ -97,11 +97,11 @@ function mouseReleased() {
             case leftDist:
               selectedWidget.posX = left.posX;
               break;
-            case rightDist:
-              selectedWidget.posX = right.posX;
-              break;
             case upDist:
               selectedWidget.posY = up.posY;
+              break;
+            case rightDist:
+              selectedWidget.posX = right.posX;
               break;
             case downDist:
               selectedWidget.posY = down.posY;
@@ -134,7 +134,7 @@ function somethingOverlaps(selectedWidget) {
 
 function widgetsOverlap(widget1, widget2) {
   //compare draw functions because that is the only way to uniquely identify the widgets
-  if(widget1.draw == widget2.draw) {
+  if(widget1.draw.name == widget2.draw.name) {
     return false;
   }
   return rectanglesOverlap(widget1.posX, widget1.posY, widget1.posX + widget1.w, widget1.posY + widget1.h,
