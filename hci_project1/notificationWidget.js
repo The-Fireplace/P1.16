@@ -5,7 +5,6 @@ let radius = 100;
 let opened = false;
 let notificationContent = [];
 let notificationNum = 3;
-let notificationRect = [];
 
 notificationContent[0] = newContent('twitter', 'Someone @ you.', "2:34 PM");
 notificationContent[1] = newContent('facebook', 'Someone poked you.', "2:32 PM");
@@ -44,8 +43,8 @@ function notificationDraw(x, y, w, h) {
         }
         fill('rgba(255,255,255, 0.1)');
         if (x+250 > 1000 && y - 401 < 0) {
-            widgets[1].posX = 950;
-            widgets[1].posY = 0;
+            widgets[7].posX = 950;
+            widgets[7].posY = 0;
             rect(x - 175, y + 51, 250, 400, 10);
             fillContent(x-175, y+451);
         }
@@ -55,14 +54,14 @@ function notificationDraw(x, y, w, h) {
         }
         else {
             if (x+250 > 1000){
-                // widgets[1].posX = x - (x + 250 - 1000);
-                widgets[1].posX = 950;
+                // widgets[7].posX = x - (x + 250 - 1000);
+                widgets[7].posX = 950;
                 rect(x-175, y-401, 250, 400, 10);
                 fillContent(x-175, y);
             }
             if (y - 401 < 0){
-                // widgets[1].posY = y + (401 - y);
-                widgets[1].posY = 0;
+                // widgets[7].posY = y + (401 - y);
+                widgets[7].posY = 0;
                 rect(x, y + 51, 250, 400, 10);
                 fillContent(x, y+451);
             }
