@@ -57,6 +57,7 @@ function mouseReleased() {
     //Don't let widgets overlap
     //This will generally put the widget closest to where it was released, but edge cases do exist.
     while(somethingOverlaps(selectedWidget)) {
+      let unfixable = false;
       for(let w in widgets) {
         w = widgets[w];
         if(widgetsOverlap(selectedWidget, w)) {
@@ -86,6 +87,9 @@ function mouseReleased() {
               rightDist > 0 ? rightDist : Number.MAX_VALUE,
               upDist > 0 ? upDist : Number.MAX_VALUE,
               downDist > 0 ? downDist : Number.MAX_VALUE);
+          if(min == Number.MAX_VALUE) {
+            unfixable = true;
+          }
 
           switch(min) {
             case leftDist:
@@ -103,6 +107,9 @@ function mouseReleased() {
           }
           break;
         }
+      }
+      if(unfixable) {
+        break;
       }
     }
     selectedWidget = null;
