@@ -58,6 +58,8 @@ function mouseReleased() {
   } else {
     //Don't let widgets overlap
     //This will generally put the widget closest to where it was released, but edge cases do exist.
+    let shifted = [{x:0,y:0}];
+    let shiftCoord = {x:0,y:0};
     while(somethingOverlaps(selectedWidget)) {
       let unfixable = false;
       for(let w in widgets) {
@@ -85,10 +87,11 @@ function mouseReleased() {
           const upDist = Math.abs(selectedWidget.posY-up.posY);
           const downDist = Math.abs(down.posY-selectedWidget.posY);
           //If distance is 0 we don't want to use it because that means there was nowhere to move it in that direction.
-          const min = Math.min(leftDist > 0 ? leftDist : Number.MAX_VALUE,
-              rightDist > 0 ? rightDist : Number.MAX_VALUE,
-              upDist > 0 ? upDist : Number.MAX_VALUE,
-              downDist > 0 ? downDist : Number.MAX_VALUE);
+          //Also, if shifted contains the new coords, don't use it because we could end up in an infinite loop going back and forth between two spots.
+          const min = Math.min(leftDist > 0 && !hasCoords(shifted, {x:shiftCoord.x-1,y:shiftCoord.y}) ? leftDist : Number.MAX_VALUE,
+              rightDist > 0 && !hasCoords(shifted, {x:shiftCoord.x+1,y:shiftCoord.y}) ? rightDist : Number.MAX_VALUE,
+              upDist > 0 && !hasCoords(shifted, {x:shiftCoord.x,y:shiftCoord.y-1}) ? upDist : Number.MAX_VALUE,
+              downDist > 0 && !hasCoords(shifted, {x:shiftCoord.x,y:shiftCoord.y+1}) ? downDist : Number.MAX_VALUE);
           if(min == Number.MAX_VALUE) {
             unfixable = true;
           }
@@ -96,17 +99,22 @@ function mouseReleased() {
           switch(min) {
             case leftDist:
               selectedWidget.posX = left.posX;
+              shiftCoord.x -= 1;
               break;
             case upDist:
               selectedWidget.posY = up.posY;
+              shiftCoord.y -= 1;
               break;
             case rightDist:
               selectedWidget.posX = right.posX;
+              shiftCoord.x += 1;
               break;
             case downDist:
               selectedWidget.posY = down.posY;
+              shiftCoord.y += 1;
               break;
           }
+          shifted[shifted.length] = {x:shiftCoord.x,y:shiftCoord.y};
           break;
         }
       }
@@ -116,6 +124,16 @@ function mouseReleased() {
     }
     selectedWidget = null;
   }
+}
+
+function hasCoords(coordArray, coords) {
+  for(let coord in coordArray) {
+    coord = coordArray[coord];
+    if(coord.x == coords.x && coord.y == coords.y) {
+      return true;
+    }
+  }
+  return false;
 }
 
 function cloneWidgetCoords(widget) {
