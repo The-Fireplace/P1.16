@@ -15,7 +15,9 @@ function setup() {
   widgets[4] = newWidget(0, 210, 200, 200, stockDraw, stockClick);
   widgets[5] = newWidget(750, 0, 250, 200, weatherWidgetDraw, noClick);
   widgets[6] = newWidget(450, 0, 125, 150, lbDraw, lbClick, lbDrag);
-  
+  widgets[7] = newWidget(0, 950, 50, 50, notificationDraw, notificationClick, noDragOverride, false);
+
+  notificationIcon();
   weatherSun();
   loadNews();
   setupHealthWidget(widgets[1].w, widgets[1].h);
@@ -26,8 +28,8 @@ function setup() {
 //Creates a new widget object with the specified initial position, size, and function for draw and click.
 //drawFunc(int x, int y, int width, int height) where x,y is the top left corner of the widget
 //clickFunc(int x, int y, int width, int height) where x,y is the position within the widget that was clicked, so the top left corner of the widget is 0,0 and the bottom right is the widget's width,height.
-function newWidget(x, y, w, h, drawFunc, clickFunc, dragOverrideFunc=noDragOverride) {
-return {posX:x,posY:y,w:w,h:h,oX:0,oY:0,draw:drawFunc,click:clickFunc,dragOverride:dragOverrideFunc};
+function newWidget(x, y, w, h, drawFunc, clickFunc, dragOverrideFunc=noDragOverride, makeRect=true) {
+  return {posX:x,posY:y,w:w,h:h,oX:0,oY:0,draw:drawFunc,click:clickFunc,dragOverride:dragOverrideFunc,makeRect:makeRect};
 }
 function mouseDragged() {
   if(selectedWidget == null) {
@@ -185,7 +187,8 @@ function draw() {
     }
     noStroke();
     //draw background
-    rect(r.posX, r.posY, r.w, r.h, 16);
+    if(r.makeRect)
+      rect(r.posX, r.posY, r.w, r.h, 16);
     //call widget's draw for the foreground
     r.draw(r.posX + 8, r.posY + 8, r.w - 16, r.h - 16);
   }
@@ -196,5 +199,9 @@ function noClick(x, y, w, h) {
 }
 
 function noDragOverride(x, y, w, h) {
+  return false;
+}
+
+function touchStarted() {
   return false;
 }
