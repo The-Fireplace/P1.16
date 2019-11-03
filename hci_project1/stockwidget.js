@@ -54,7 +54,7 @@ function stockClick(x, y, w, h){
 
 function stockTable(x, y, w, h){
   const lineHeight = h/(stocks.length +1);
-  text("test");
+  //text("test");
   fill('rgba(255, 0, 0, 0.75)');
   stroke(0);
   rect(x, y, w, lineHeight, 10, 10, 0, 0);
