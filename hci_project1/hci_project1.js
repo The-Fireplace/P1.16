@@ -14,7 +14,7 @@ function setup() {
   widgets[3] = newWidget(100, height - 60, 200, 60, musicWidgetDraw, musicWidgetClick);
   widgets[4] = newWidget(0, 210, 200, 200, stockDraw, stockClick);
   widgets[5] = newWidget(750, 0, 250, 200, weatherWidgetDraw, noClick);
-  widgets[6] = newWidget(450, 0, 125, 150, lbDraw, lbClick, lbDrag);
+  widgets[6] = newWidget(450, 0, 125, 150, lbDraw, noClick, lbDrag);
   widgets[7] = newWidget(0, 950, 50, 50, notificationDraw, notificationClick, noDragOverride, false);
 
   notificationIcon();
@@ -33,7 +33,7 @@ function newWidget(x, y, w, h, drawFunc, clickFunc, dragOverrideFunc=noDragOverr
 }
 
 function mouseDragged() {
-  if(selectedWidget == null) {
+  if(selectedWidget == null && !dragSlider) {
     for (let r in widgets) {
       r = widgets[r];
       if (mouseX > r.posX && mouseX < r.posX + r.w && mouseY > r.posY && mouseY < r.posY + r.h && !r.dragOverride(r.posX, r.posY, r.w, r.h)) {
@@ -223,9 +223,5 @@ function noClick(x, y, w, h) {
 }
 
 function noDragOverride(x, y, w, h) {
-  return false;
-}
-
-function touchStarted() {
   return false;
 }
