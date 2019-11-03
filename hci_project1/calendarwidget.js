@@ -30,6 +30,8 @@ function calendarDraw(x, y, w, h) {
       text(task.time, x+3*w/4, y+(h/4)*(t+1), w/4, h/4);
     }
   } else {
+    fill(0);
+    noStroke();
     text('No tasks', x, y+(h/4), w, h/4);
   }
 }

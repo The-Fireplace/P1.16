@@ -42,7 +42,7 @@ function weatherWidgetDraw(x, y, w, h) {
 //font awesome initialization and weather api url
 function weatherSun() {
     // loadJSON used for weather api url
-    //todo loadJSON(url, gotWeather);
+    loadJSON(url, gotWeather);
 
     Div = createDiv("<i class='fas fa-sun '></i>");
     Div.style('font-size', '60px');
