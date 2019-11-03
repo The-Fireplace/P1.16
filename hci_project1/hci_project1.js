@@ -11,7 +11,7 @@ function setup() {
   widgets[0] = newWidget(0, 0, 300, 200, newsDraw, newsClick);
   widgets[1] = newWidget(width - 200, 320, 200, 200, healthDraw, healthClick);
   widgets[2] = newWidget(width - 200, 210, 200, 100, calendarDraw, calendarClick);
-  widgets[3] = newWidget(100, height - 50, 200, 60, musicWidgetDraw, musicWidgetClick);
+  widgets[3] = newWidget(100, height - 60, 200, 60, musicWidgetDraw, musicWidgetClick);
   widgets[4] = newWidget(0, 210, 200, 200, stockDraw, stockClick);
   widgets[5] = newWidget(750, 0, 250, 200, weatherWidgetDraw, noClick);
   widgets[6] = newWidget(450, 0, 125, 150, lbDraw, lbClick, lbDrag);
@@ -88,7 +88,8 @@ function mouseReleased() {
           const downDist = Math.abs(down.posY-selectedWidget.posY);
           //If distance is 0 we don't want to use it because that means there was nowhere to move it in that direction.
           //Also, if shifted contains the new coords, don't use it because we could end up in an infinite loop going back and forth between two spots.
-          const min = Math.min(leftDist > 0 && !hasCoords(shifted, {x:shiftCoord.x-1,y:shiftCoord.y}) ? leftDist : Number.MAX_VALUE,
+          const min = Math.min(
+            leftDist > 0 && !hasCoords(shifted, {x:shiftCoord.x-1,y:shiftCoord.y}) ? leftDist : Number.MAX_VALUE,
               rightDist > 0 && !hasCoords(shifted, {x:shiftCoord.x+1,y:shiftCoord.y}) ? rightDist : Number.MAX_VALUE,
               upDist > 0 && !hasCoords(shifted, {x:shiftCoord.x,y:shiftCoord.y-1}) ? upDist : Number.MAX_VALUE,
               downDist > 0 && !hasCoords(shifted, {x:shiftCoord.x,y:shiftCoord.y+1}) ? downDist : Number.MAX_VALUE);
