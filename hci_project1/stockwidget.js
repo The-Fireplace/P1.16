@@ -1,6 +1,6 @@
 let stocks = ["NAQ", "APP", "PEN", "ISAN", "DVAG",];
 let upDown = ["+","-","","+","+",];
-let percent = ["0.5","102","626","14","52.2",];
+let percent = ["0.5","99.9","0.0","14.0","52.2",];
 let value = ["50.02","12.22","626.24","25.76","19.25",];
 let selectedStock = -1;
 
@@ -88,7 +88,7 @@ function stockTable(x, y, w, h){
     let percentVal = upDown[i]+percent[i]+'%';
     if (upDown[i] == "+"){fill(0,102,0);}
     else if (upDown[i] == "-"){fill(220,0,0);}
-    else {fill(0); percentVal = '0.00%';}
+    else {fill(0); percentVal = '0.0%';}
     text(percentVal, w+x, y+yHeight);
   }
 }
