@@ -1,4 +1,4 @@
-let stocks = ["NAQ", "APP", "PENI", "SAN", "DVAG",];
+let stocks = ["NAQ", "APP", "PEN", "ISAN", "DVAG",];
 let upDown = ["+","-","","+","+",];
 let percent = ["0.5","102","626","14","52.2",];
 let value = ["50.02","12.22","626.24","25.76","19.25",];
