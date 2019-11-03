@@ -4,46 +4,24 @@
 
 [Readme](https://the-fireplace.github.io/Project1-3366)
 
-[Demo Sketch](https://the-fireplace.github.io/Project1-3366/hci-project1/)
+[Demo](https://the-fireplace.github.io/Project1-3366/hci-project1/)
 
+### UI and Main Functions
+TODO Insert gif
+![]()
+**Some of the general information that the mirror will provide are**
+- personalized calendar events for today
+- personalized news feed items (news), text messages and social feed items (notifications)
+- clock and local weather
 
-### Team member and duties
+**The mirror should also provide health-related information such as**
+- how long you slept last night, and how your total hours sleep compares to the last week of data
+- your current weight (assuming you have a scale embedded in the floor in front of the mirror), and how it compares to the last week of data
+- how many steps you took, how long you stood, and how long you exercised yesterday, and how that compares to the last week of data on a time series plot.
+- how long do you spend in front of the mirror
 
-![Group Photo](https://raw.githubusercontent.com/The-Fireplace/Project1-3366/master/resources/group_photo.png)
-
-- Rick Trevino - Widget Implementation, Sketch Designer
-
-- Lance Gable - Leader, Widget Implementation
-
-- Michael Bishop - Widget Implementation, Sketch Presentation 
-
-### Sketch UI and Main Functions
-
-![full sketch](https://raw.githubusercontent.com/The-Fireplace/Project1-3366/master/resources/2019-10-15-Note-17-47-resizeimage.jpg)
-
-- News Section showing highlights for the day from sports, politics, money, etc.
-
-- Light with a button and color slider
-
-- Weather, time, date, and calendar tied to your personal device
-
-- Stock info with a expanding graph for individual stock
-
-- Health section with graphs representing a total of 6 different statistics to view as well as a scroll feature for different weeks to view
-
-- Notification area with any notifications from your personal device as well as settings for the mirror
-
-- Music player controls and expandable to view playlists, albums, or to which service it is connected to
-
-- Drag and drop feature to customize the mirrors layout
-
-[Demo Sketch](https://the-fireplace.github.io/Project1-3366/hci-project1/)
-
-
-### Curent Status
-
-Widgets for the mirror are done to allow for drag and drop features. The widgets: Weather, Health graphs, and News have been implemented.
-
-### The Future Plan
-
-Integrating the light, notifications, music player, and stocks widgets. 
+**Some other things the system should do**
+- allow the user to customize the display - e.g. the widget locations (drag and drop items in the desired location on the screen)
+- play music when you are brushing your teeth or in the shower (Select what you want to play on your phone)
+- act as a light source (with different possible colors)
+- your imagination (Stocks)
