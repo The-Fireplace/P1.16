@@ -15,7 +15,7 @@ function musicWidgetDraw(x, y, w, h) {
   //Set up buttons if they are not set up yet
   if(playButton == null) {
     playButton = createDiv("<i class='fas fa-play'></i>");
-    pauseButton = createDiv("<i class='fas fa-pause'></i>");
+    pauseButton = createDiv("");
     nextButton = createDiv("<i class='fas fa-forward'></i>");
     prevButton = createDiv("<i class='fas fa-backward'></i>");
   }
