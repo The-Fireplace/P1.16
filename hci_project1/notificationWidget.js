@@ -67,10 +67,10 @@ function notificationDraw(x, y, w, h) {
         for (let index in settingContentDiv) {    
             settingContentDiv[index].style('display', 'block');
         }
-        fill('rgba(255,255,255, 0.1)');
         settingRect(x, y, w, h);
+        fill('rgba(255,255,255, 0.1)');
 
-        if (x+250 > 1000 && y - 401 < 0) {
+        if (x+251 > 1000 && y - 401 < 0) {
             widgets[7].posX = 750;
             widgets[7].posY = 0;
             rect(x, y + 51, 250, 400, 10);
@@ -147,7 +147,7 @@ function fillContent(x, y) {
 }
 
 function createContentDiv() {
-    let twit = "<i class=\"fab fa-twitter\"></i>"
+    let twit = "<i class=\"fab fa-twitter\"></i>";
     let facebook = "<i class=\"fab fa-facebook-f\"></i>";
     let messages = "<i class=\"fab fa-facebook-messenger\"></i>";
     let wifi = "<i class=\"fas fa-wifi\"></i>";
