@@ -2,7 +2,7 @@ let playButton = null, pauseButton = null, nextButton = null, prevButton = null;
 let playing = false;
 let curTimeStamp = Math.floor(Math.random()*100);
 let maxTimeStamp = 500;
-let curTrack = 'Nothing Playing';
+let curTrack = 'Rick Astley - Never Gonna Give You Up';
 
 function musicWidgetDraw(x, y, w, h) {
   //Draw progress bar at the bottom
