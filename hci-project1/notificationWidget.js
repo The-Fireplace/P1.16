@@ -23,6 +23,7 @@ function notificationDraw(x, y, w, h) {
 
     if (selectedWidget != null) {
         if (selectedWidget.draw.name == 'notificationDraw') opened = false;
+        else opened = false;
     }
     
     fill(255, 0, 0);
