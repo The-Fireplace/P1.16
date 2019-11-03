@@ -51,12 +51,12 @@ function setupHealthWidget(px, py) {
   standing.style('height', (y/8)+'px');
   mirror.style('height', (y/8)+'px');
 
-  health.mousePressed(genGraphR);
-  weight.mousePressed(genGraphG);
-  sleep.mousePressed(genGraphLB);
-  steps.mousePressed(genGraphO);
-  standing.mousePressed(genGraphB);
-  mirror.mousePressed(genGraphP);
+  health.mouseReleased(genGraphR);
+  weight.mouseReleased(genGraphG);
+  sleep.mouseReleased(genGraphLB);
+  steps.mouseReleased(genGraphO);
+  standing.mouseReleased(genGraphB);
+  mirror.mouseReleased(genGraphP);
 }
 
 function healthDraw(x, y, w, h) {
@@ -173,6 +173,8 @@ function generateGraphWidget(corX, corY, x, y, scale, v1, v2, v3, v4, v5, v6, v7
 }
 
 function genGraphR(){
+  if(selectedWidget != null && selectedWidget.draw.name == healthDraw.name)
+    return;
   s = 10;
   b1 = 6;
   b2 = 2;
@@ -185,6 +187,8 @@ function genGraphR(){
   lab = 'min';
 }
 function genGraphG(){
+  if(selectedWidget != null && selectedWidget.draw.name == healthDraw.name)
+    return;
   s = 50;
   b1 = 3;
   b2 = 3.2;
@@ -197,6 +201,8 @@ function genGraphG(){
   lab = 'lbs';
 }
 function genGraphLB(){
+  if(selectedWidget != null && selectedWidget.draw.name == healthDraw.name)
+    return;
   s = 1;
   b1 = 8;
   b2 = 7;
@@ -209,6 +215,8 @@ function genGraphLB(){
   lab = 'hr';
 }
 function genGraphO(){
+  if(selectedWidget != null && selectedWidget.draw.name == healthDraw.name)
+    return;
   s = 500;
   b1 = 6;
   b2 = 5;
@@ -221,6 +229,8 @@ function genGraphO(){
   lab = 'stepts';
 }
 function genGraphB(){
+  if(selectedWidget != null && selectedWidget.draw.name == healthDraw.name)
+    return;
   s = 10;
   b1 = 5;
   b2 = 4;
@@ -233,6 +243,8 @@ function genGraphB(){
   lab = 'min';
 }
 function genGraphP(){
+  if(selectedWidget != null && selectedWidget.draw.name == healthDraw.name)
+    return;
   s = 10;
   b1 = 1;
   b2 = 2;

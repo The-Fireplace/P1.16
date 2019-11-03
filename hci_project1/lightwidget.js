@@ -22,7 +22,7 @@ function lbDraw(x, y, w, h) {
   lb.style('height', (h/20)*17+'px');
   lb.style('width', (w)+'px');
   lb.style('font-size', w/4+'px');
-  lb.mousePressed(opClSettings);
+  lb.mouseReleased(opClSettings);
 
   slider.position(x, (h/20)*18+y);
   slider.style('width', w+'px');
@@ -45,6 +45,8 @@ function lbDrag(x, y, w, h){
 }
 
 function opClSettings(){
+  if(selectedWidget != null && selectedWidget.draw.name == lbDraw.name)
+    return;
   if (!lit){
     lb.class("graphWidButtonYellow");
     slider.show();
