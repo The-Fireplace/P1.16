@@ -1,12 +1,12 @@
 //div used as the created div for font awesome
-var Div;
+let Div;
 
 //url used for weather api
-var url = "http://api.weatherstack.com/current?access_key=d5e66f1a3c3ac4b54e586d0e6029e877&query=Lubbock&units=f"
+const url = "http://api.weatherstack.com/current?access_key=d5e66f1a3c3ac4b54e586d0e6029e877&query=Lubbock&units=f";
 
 //the following 2 variables are just initializations to catch errors
-var weatherNum = 0;
-var weatherDesc = 'Sunny';
+let weatherNum = 0;
+let weatherDesc = 'Sunny';
 
 //standard draw functions that needs to be used in the newwidget function call
 function weatherWidgetDraw(x, y, w, h) {
@@ -28,7 +28,7 @@ function weatherWidgetDraw(x, y, w, h) {
     text('LUBBOCK', x+125, y+32);
     textSize(22);
     text('Texas', x+125, y+55);
-    
+
     textAlign(CENTER, CENTER);
 
     // setting font awesome, temp, and weather description size and location
@@ -41,8 +41,6 @@ function weatherWidgetDraw(x, y, w, h) {
 
 //font awesome initialization and weather api url
 function weatherSun() {
-
-
     // loadJSON used for weather api url
     //todo loadJSON(url, gotWeather);
 
@@ -53,13 +51,13 @@ function weatherSun() {
 //used for weather api callback, as well as setting all info from the callback
 function gotWeather(weather) {
     weatherNum = Number(weather.current.temperature);
-    weatherCode = Number(weather.current.weather_code);
+    const weatherCode = Number(weather.current.weather_code);
     weatherDesc = String(weather.current.weather_descriptions[0]);
 
     //the following is setting the Div to different font awesome icons based on weatherCode (weatherCode can be found on line weatherstack.com)
     if (weatherCode == 113){
         Div.html("<i class='fas fa-sun slow-spin'></i>", false);
-    } 
+    }
     else if (weatherCode == 116){
         Div.html("<i class='fas fa-cloud-sun'></i>", false);
     }
@@ -99,6 +97,6 @@ function weatherTime() {
 
 //creates and returns the current date in EEE, MMM dd, YYYY (Sun, Oct 2, 2019) format
 function weatherDate() {
-    var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+    const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
     return new Date().toLocaleDateString("en-US", options);
 }

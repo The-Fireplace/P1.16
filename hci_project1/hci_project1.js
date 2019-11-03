@@ -31,6 +31,7 @@ function setup() {
 function newWidget(x, y, w, h, drawFunc, clickFunc, dragOverrideFunc=noDragOverride, makeRect=true) {
   return {posX:x,posY:y,w:w,h:h,oX:0,oY:0,draw:drawFunc,click:clickFunc,dragOverride:dragOverrideFunc,makeRect:makeRect};
 }
+
 function mouseDragged() {
   if(selectedWidget == null) {
     for (let r in widgets) {
@@ -56,74 +57,78 @@ function mouseReleased() {
       }
     }
   } else {
-    //Don't let widgets overlap
-    //This will generally put the widget closest to where it was released, but edge cases do exist.
-    let shifted = [{x:0,y:0}];
-    let shiftCoord = {x:0,y:0};
-    while(somethingOverlaps(selectedWidget)) {
-      let unfixable = false;
-      for(let w in widgets) {
-        w = widgets[w];
-        if(widgetsOverlap(selectedWidget, w)) {
-          const left = cloneWidgetCoords(selectedWidget);
-          const right = cloneWidgetCoords(selectedWidget);
-          const up = cloneWidgetCoords(selectedWidget);
-          const down = cloneWidgetCoords(selectedWidget);
-          if(w.posX-left.w > 0) {
-            left.posX = w.posX - left.w - 1;
-          }
-          if(w.posX+w.w+right.w < width) {
-            right.posX = w.posX + w.w + 1;
-          }
-          if(w.posY-up.h > 0) {
-            up.posY = w.posY - up.h - 1;
-          }
-          if(w.posY+w.h+down.h < height) {
-            down.posY = w.posY + w.h + 1;
-          }
+    preventSelectedWidgetOverlap();
+    selectedWidget = null;
+  }
+}
 
-          const leftDist = Math.abs(selectedWidget.posX-left.posX);
-          const rightDist = Math.abs(right.posX-selectedWidget.posX);
-          const upDist = Math.abs(selectedWidget.posY-up.posY);
-          const downDist = Math.abs(down.posY-selectedWidget.posY);
-          //If distance is 0 we don't want to use it because that means there was nowhere to move it in that direction.
-          //Also, if shifted contains the new coords, don't use it because we could end up in an infinite loop going back and forth between two spots.
-          const min = Math.min(
-            leftDist > 0 && !hasCoords(shifted, {x:shiftCoord.x-1,y:shiftCoord.y}) ? leftDist : Number.MAX_VALUE,
-              rightDist > 0 && !hasCoords(shifted, {x:shiftCoord.x+1,y:shiftCoord.y}) ? rightDist : Number.MAX_VALUE,
-              upDist > 0 && !hasCoords(shifted, {x:shiftCoord.x,y:shiftCoord.y-1}) ? upDist : Number.MAX_VALUE,
-              downDist > 0 && !hasCoords(shifted, {x:shiftCoord.x,y:shiftCoord.y+1}) ? downDist : Number.MAX_VALUE);
-          if(min == Number.MAX_VALUE) {
-            unfixable = true;
-          }
-
-          switch(min) {
-            case leftDist:
-              selectedWidget.posX = left.posX;
-              shiftCoord.x -= 1;
-              break;
-            case upDist:
-              selectedWidget.posY = up.posY;
-              shiftCoord.y -= 1;
-              break;
-            case rightDist:
-              selectedWidget.posX = right.posX;
-              shiftCoord.x += 1;
-              break;
-            case downDist:
-              selectedWidget.posY = down.posY;
-              shiftCoord.y += 1;
-              break;
-          }
-          shifted[shifted.length] = {x:shiftCoord.x,y:shiftCoord.y};
-          break;
+//Don't let widgets overlap
+//This will generally put the widget closest to where it was released, but edge cases do exist.
+function preventSelectedWidgetOverlap() {
+  let shifted = [{x: 0, y: 0}];
+  let shiftCoord = {x: 0, y: 0};
+  while (somethingOverlaps(selectedWidget)) {
+    let unfixable = false;
+    for (let w in widgets) {
+      w = widgets[w];
+      if (widgetsOverlap(selectedWidget, w)) {
+        const left = cloneWidgetCoords(selectedWidget);
+        const right = cloneWidgetCoords(selectedWidget);
+        const up = cloneWidgetCoords(selectedWidget);
+        const down = cloneWidgetCoords(selectedWidget);
+        if (w.posX - left.w > 0) {
+          left.posX = w.posX - left.w - 1;
         }
-      }
-      if(unfixable) {
+        if (w.posX + w.w + right.w < width) {
+          right.posX = w.posX + w.w + 1;
+        }
+        if (w.posY - up.h > 0) {
+          up.posY = w.posY - up.h - 1;
+        }
+        if (w.posY + w.h + down.h < height) {
+          down.posY = w.posY + w.h + 1;
+        }
+
+        const leftDist = Math.abs(selectedWidget.posX - left.posX);
+        const rightDist = Math.abs(right.posX - selectedWidget.posX);
+        const upDist = Math.abs(selectedWidget.posY - up.posY);
+        const downDist = Math.abs(down.posY - selectedWidget.posY);
+        //If distance is 0 we don't want to use it because that means there was nowhere to move it in that direction.
+        //Also, if shifted contains the new coords, don't use it because we could end up in an infinite loop going back and forth between two spots.
+        const min = Math.min(
+          leftDist > 0 && !hasCoords(shifted, {x: shiftCoord.x - 1, y: shiftCoord.y}) ? leftDist : Number.MAX_VALUE,
+          rightDist > 0 && !hasCoords(shifted, {x: shiftCoord.x + 1, y: shiftCoord.y}) ? rightDist : Number.MAX_VALUE,
+          upDist > 0 && !hasCoords(shifted, {x: shiftCoord.x, y: shiftCoord.y - 1}) ? upDist : Number.MAX_VALUE,
+          downDist > 0 && !hasCoords(shifted, {x: shiftCoord.x, y: shiftCoord.y + 1}) ? downDist : Number.MAX_VALUE);
+        if (min == Number.MAX_VALUE) {
+          unfixable = true;
+        }
+
+        switch (min) {
+          case leftDist:
+            selectedWidget.posX = left.posX;
+            shiftCoord.x -= 1;
+            break;
+          case upDist:
+            selectedWidget.posY = up.posY;
+            shiftCoord.y -= 1;
+            break;
+          case rightDist:
+            selectedWidget.posX = right.posX;
+            shiftCoord.x += 1;
+            break;
+          case downDist:
+            selectedWidget.posY = down.posY;
+            shiftCoord.y += 1;
+            break;
+        }
+        shifted[shifted.length] = {x: shiftCoord.x, y: shiftCoord.y};
         break;
       }
     }
-    selectedWidget = null;
+    if (unfixable) {
+      break;
+    }
   }
 }
 
@@ -157,7 +162,7 @@ function widgetsOverlap(widget1, widget2) {
     return false;
   }
   return rectanglesOverlap(widget1.posX, widget1.posY, widget1.posX + widget1.w, widget1.posY + widget1.h,
-      widget2.posX, widget2.posY, widget2.posX + widget2.w, widget2.posY + widget2.h);
+    widget2.posX, widget2.posY, widget2.posX + widget2.w, widget2.posY + widget2.h);
 }
 
 function rectanglesOverlap(lx1, ly1, rx1, ry1, lx2, ly2, rx2, ry2) {
